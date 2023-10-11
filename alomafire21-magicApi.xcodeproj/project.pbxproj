@@ -10,7 +10,6 @@
 		7CE683402AD70B3100266818 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6833F2AD70B3100266818 /* AppDelegate.swift */; };
 		7CE683422AD70B3100266818 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE683412AD70B3100266818 /* SceneDelegate.swift */; };
 		7CE683442AD70B3100266818 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE683432AD70B3100266818 /* ViewController.swift */; };
-		7CE683472AD70B3100266818 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE683452AD70B3100266818 /* Main.storyboard */; };
 		7CE683492AD70B3200266818 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE683482AD70B3200266818 /* Assets.xcassets */; };
 		7CE6834C2AD70B3200266818 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE6834A2AD70B3200266818 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -20,7 +19,6 @@
 		7CE6833F2AD70B3100266818 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CE683412AD70B3100266818 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7CE683432AD70B3100266818 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7CE683462AD70B3100266818 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CE683482AD70B3200266818 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CE6834B2AD70B3200266818 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CE6834D2AD70B3200266818 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +35,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C857F1E2AD70E130005C0F3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7CE6833F2AD70B3100266818 /* AppDelegate.swift */,
+				7CE683412AD70B3100266818 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		7CE683332AD70B3100266818 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +63,29 @@
 		7CE6833E2AD70B3100266818 /* alomafire21-magicApi */ = {
 			isa = PBXGroup;
 			children = (
-				7CE6833F2AD70B3100266818 /* AppDelegate.swift */,
-				7CE683412AD70B3100266818 /* SceneDelegate.swift */,
+				7CE683532AD70D8300266818 /* Sources */,
+				7CE683542AD70D9200266818 /* Resources */,
+			);
+			path = "alomafire21-magicApi";
+			sourceTree = "<group>";
+		};
+		7CE683532AD70D8300266818 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				7C857F1E2AD70E130005C0F3 /* App */,
 				7CE683432AD70B3100266818 /* ViewController.swift */,
-				7CE683452AD70B3100266818 /* Main.storyboard */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		7CE683542AD70D9200266818 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				7CE683482AD70B3200266818 /* Assets.xcassets */,
 				7CE6834A2AD70B3200266818 /* LaunchScreen.storyboard */,
 				7CE6834D2AD70B3200266818 /* Info.plist */,
 			);
-			path = "alomafire21-magicApi";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +148,6 @@
 			files = (
 				7CE6834C2AD70B3200266818 /* LaunchScreen.storyboard in Resources */,
 				7CE683492AD70B3200266818 /* Assets.xcassets in Resources */,
-				7CE683472AD70B3100266818 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +167,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7CE683452AD70B3100266818 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7CE683462AD70B3100266818 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7CE6834A2AD70B3200266818 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,12 +301,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HH9D8WXQ67;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "alomafire21-magicApi/Info.plist";
+				INFOPLIST_FILE = "alomafire21-magicApi/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +313,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.sonyigorevna.alomafire21-magicApi";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,12 +331,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HH9D8WXQ67;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "alomafire21-magicApi/Info.plist";
+				INFOPLIST_FILE = "alomafire21-magicApi/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +343,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.sonyigorevna.alomafire21-magicApi";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
