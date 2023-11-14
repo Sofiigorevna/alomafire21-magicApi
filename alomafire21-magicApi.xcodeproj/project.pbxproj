@@ -10,6 +10,9 @@
 		7C857F202AD70EB70005C0F3 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C857F1F2AD70EB70005C0F3 /* Model.swift */; };
 		7C857F232AD70F340005C0F3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7C857F222AD70F340005C0F3 /* Alamofire */; };
 		7C857F252AD70F570005C0F3 /* APIFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C857F242AD70F570005C0F3 /* APIFetch.swift */; };
+		7C857F292AD711070005C0F3 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C857F282AD711070005C0F3 /* View.swift */; };
+		7C857F2B2AD711C60005C0F3 /* CastomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C857F2A2AD711C60005C0F3 /* CastomTableViewCell.swift */; };
+		7C857F2E2AD714400005C0F3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C857F2D2AD714400005C0F3 /* DetailViewController.swift */; };
 		7CE683402AD70B3100266818 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6833F2AD70B3100266818 /* AppDelegate.swift */; };
 		7CE683422AD70B3100266818 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE683412AD70B3100266818 /* SceneDelegate.swift */; };
 		7CE683442AD70B3100266818 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE683432AD70B3100266818 /* ViewController.swift */; };
@@ -20,6 +23,9 @@
 /* Begin PBXFileReference section */
 		7C857F1F2AD70EB70005C0F3 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		7C857F242AD70F570005C0F3 /* APIFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFetch.swift; sourceTree = "<group>"; };
+		7C857F282AD711070005C0F3 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		7C857F2A2AD711C60005C0F3 /* CastomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastomTableViewCell.swift; sourceTree = "<group>"; };
+		7C857F2D2AD714400005C0F3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7CE6833C2AD70B3100266818 /* alomafire21-magicApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "alomafire21-magicApi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE6833F2AD70B3100266818 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CE683412AD70B3100266818 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +54,33 @@
 				7CE683412AD70B3100266818 /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		7C857F262AD70FA90005C0F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C857F1F2AD70EB70005C0F3 /* Model.swift */,
+				7C857F242AD70F570005C0F3 /* APIFetch.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7C857F272AD70FB00005C0F3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7CE683432AD70B3100266818 /* ViewController.swift */,
+				7C857F2D2AD714400005C0F3 /* DetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7C857F2C2AD713F30005C0F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C857F282AD711070005C0F3 /* View.swift */,
+				7C857F2A2AD711C60005C0F3 /* CastomTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7CE683332AD70B3100266818 = {
@@ -79,9 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				7C857F1E2AD70E130005C0F3 /* App */,
-				7CE683432AD70B3100266818 /* ViewController.swift */,
-				7C857F1F2AD70EB70005C0F3 /* Model.swift */,
-				7C857F242AD70F570005C0F3 /* APIFetch.swift */,
+				7C857F262AD70FA90005C0F3 /* Model */,
+				7C857F2C2AD713F30005C0F3 /* View */,
+				7C857F272AD70FB00005C0F3 /* Controllers */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -174,9 +207,12 @@
 			files = (
 				7CE683442AD70B3100266818 /* ViewController.swift in Sources */,
 				7CE683402AD70B3100266818 /* AppDelegate.swift in Sources */,
+				7C857F292AD711070005C0F3 /* View.swift in Sources */,
 				7C857F252AD70F570005C0F3 /* APIFetch.swift in Sources */,
 				7CE683422AD70B3100266818 /* SceneDelegate.swift in Sources */,
+				7C857F2B2AD711C60005C0F3 /* CastomTableViewCell.swift in Sources */,
 				7C857F202AD70EB70005C0F3 /* Model.swift in Sources */,
+				7C857F2E2AD714400005C0F3 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
