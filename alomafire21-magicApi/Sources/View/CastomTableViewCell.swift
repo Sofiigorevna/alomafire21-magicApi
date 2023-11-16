@@ -8,17 +8,17 @@
 import UIKit
 
 class CastomTableViewCell: UITableViewCell {
-
+    
     let globalQueue =  DispatchQueue.global(qos: .utility)
     
     var character: Model? {
         didSet {
             artist.text = character?.artist
             name.text = character?.name
-
+            
             if  let imagePath = self.character?.imageUrl,
                 let imageURL = URL(string: imagePath){
-
+                
                 globalQueue.async {
                     if let imageData = try? Data(contentsOf: imageURL){
                         DispatchQueue.main.async{

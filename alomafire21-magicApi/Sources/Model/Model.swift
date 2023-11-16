@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 public struct Cards: Decodable {
     var cards: [Model]
     

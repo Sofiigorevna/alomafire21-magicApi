@@ -10,6 +10,9 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - Outlets
+    
+    private var dataHandler: [Model] = []
+    
     private var mainView = MainView()
     
     private lazy var textField: UITextField = {
@@ -29,7 +32,6 @@ class ViewController: UIViewController {
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 23, weight: UIImage.SymbolWeight.thin), forImageIn: .normal)
         button.imageView?.tintColor = .black
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
         return button
     }()
     
@@ -43,9 +45,15 @@ class ViewController: UIViewController {
         return stack
     }()
     
-    var data: [Cards] = []
-    
-    var dataHandler: [Model] = []
+    private func showAlert() {
+        let alertController = UIAlertController(
+            title: "Ooops",
+            message: "This card was not found, try again!",
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        self.present(alertController, animated: true)
+    }
     
     //  MARK: - Lifecycle
     
@@ -57,7 +65,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         viewConfiguration()
-
+        
         title = "Magic cards"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.titleView = textFieldStack
@@ -65,11 +73,10 @@ class ViewController: UIViewController {
     
     // MARK: - Setup
     
-    
     private func setupView() {
         APIFetchHandler.sharedInstance.fetchAPIData(queryItemValue: nil ){ apiData in
             self.dataHandler = apiData
-
+            
             DispatchQueue.main.async{
                 self.mainView.tableView.reloadData()
             }
@@ -89,18 +96,23 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Actions
-       
+    
     @objc func buttonAction() {
         
         APIFetchHandler.sharedInstance.fetchAPIData(queryItemValue: self.textField.text ){ apiData in
+            
             self.dataHandler = apiData
-
+            
+            if self.dataHandler.isEmpty {
+                DispatchQueue.main.async{
+                    self.showAlert()
+                }
+            }
             DispatchQueue.main.async{
                 self.mainView.tableView.reloadData()
             }
         }
-        
-        }
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -131,15 +143,15 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ViewController: UITextFieldDelegate {
-   
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         buttonAction()
+        
         DispatchQueue.main.async{
             self.mainView.tableView.reloadData()
         }
-        
         return true
     }
 }

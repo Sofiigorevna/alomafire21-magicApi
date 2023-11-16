@@ -9,9 +9,9 @@ import UIKit
 class DetailViewController: UIViewController {
     
     var data: [Cards] = []
-
+    
     let globalQueue =  DispatchQueue.global(qos: .utility)
-
+    
     var character: Model? {
         didSet {
             name.text = "NAME: \(character?.name ?? "unknown")."
@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
             
             if  let imagePath = self.character?.imageUrl,
                 let imageURL = URL(string: imagePath){
-
+                
                 globalQueue.async {
                     if let imageData = try? Data(contentsOf: imageURL){
                         DispatchQueue.main.async{
@@ -35,9 +35,9 @@ class DetailViewController: UIViewController {
             }
         }
     }
-
+    
     // MARK: - Outlets
-
+    
     private lazy var iconNew: UIImageView = {
         let image = UIImage()
         let imageView = UIImageView(image: image)
@@ -47,7 +47,7 @@ class DetailViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
+    
     private lazy var viewContainerNew: UIView = {
         var view = UIView()
         view.layer.cornerRadius = 10
@@ -56,20 +56,20 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .black
         return view
     }()
-
+    
     private lazy var artist: UILabel = {
         var label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
-        label.numberOfLines =  1
+        label.numberOfLines =  2
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private lazy var setName: UILabel = {
         var label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
-        label.numberOfLines =  1
+        label.numberOfLines =  2
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -78,7 +78,7 @@ class DetailViewController: UIViewController {
     private lazy var name: UILabel = {
         var label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
-        label.numberOfLines =  1
+        label.numberOfLines =  2
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -98,53 +98,51 @@ class DetailViewController: UIViewController {
         stack.axis = .vertical
         stack.alignment = .leading
         stack.distribution = .fillProportionally
-        stack.setCustomSpacing(5, after: name)
-        stack.setCustomSpacing(5, after: type)
-        stack.setCustomSpacing(5, after: artist)
-        stack.setCustomSpacing(5, after: setName)
+        stack.setCustomSpacing(2, after: name)
+        stack.setCustomSpacing(2, after: type)
+        stack.setCustomSpacing(2, after: artist)
+        stack.setCustomSpacing(2, after: setName)
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-
+    
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
         setupHierarhy()
         setupLayout()
     }
-
+    
     // MARK: - Setup
-
+    
     private func setupView() {
         view.backgroundColor = .lightGray
     }
-
-                                                       
+    
     private func setupHierarhy() {
         view.addSubview(viewContainerNew)
         viewContainerNew.addSubview(iconNew)
         view.addSubview(stack)
     }
-
+    
     private func setupLayout() {
         NSLayoutConstraint.activate([
             viewContainerNew.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             viewContainerNew.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
             viewContainerNew.widthAnchor.constraint(equalToConstant: 250),
             viewContainerNew.heightAnchor.constraint(equalToConstant: 400),
-
+            
             iconNew.centerXAnchor.constraint(equalTo: viewContainerNew.centerXAnchor),
             iconNew.centerYAnchor.constraint(equalTo: viewContainerNew.centerYAnchor),
             iconNew.topAnchor.constraint(equalTo: viewContainerNew.topAnchor, constant: 3),
             iconNew.leftAnchor.constraint(equalTo: viewContainerNew.leftAnchor, constant: 3),
-
+            
             stack.topAnchor.constraint(equalTo: viewContainerNew.bottomAnchor, constant: 50),
             stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stack.widthAnchor.constraint(equalToConstant: 250),
-            stack.heightAnchor.constraint(equalToConstant: 200),
+            stack.heightAnchor.constraint(equalToConstant: 160),
         ])
     }
 }

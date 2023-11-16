@@ -34,10 +34,10 @@ public final class MainView: UIView {
     }
     
     // MARK: - Setup
-        
+    
     private func setupHierarhy() {
         self.addSubview(tableView)
-       
+        
     }
     
     private func setupLayout() {
