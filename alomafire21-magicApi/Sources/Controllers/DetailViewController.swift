@@ -14,8 +14,7 @@ class DetailViewController: UIViewController {
 
     var character: Model? {
         didSet {
-            name.text = "NAME:\n\(character?.name ?? "unknown")."
-            manaCost.text = "ManaCost: \(character?.manaCost ?? "unknown")."
+            name.text = "NAME: \(character?.name ?? "unknown")."
             type.text = "Type: \(character?.type ?? "unknown")."
             setName.text = "SetName: \(character?.setName ?? "unknown")."
             artist.text = "Artist: \(character?.artist ?? "unknown")."
@@ -29,7 +28,6 @@ class DetailViewController: UIViewController {
                             self.iconNew.image = UIImage(data: imageData )
                         }
                     }
-
                 }
             } else {
                 self.iconNew.image = UIImage(systemName: "person.fill")
@@ -62,7 +60,7 @@ class DetailViewController: UIViewController {
     private lazy var artist: UILabel = {
         var label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
-        label.numberOfLines =  2
+        label.numberOfLines =  1
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -71,7 +69,7 @@ class DetailViewController: UIViewController {
     private lazy var setName: UILabel = {
         var label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
-        label.numberOfLines =  2
+        label.numberOfLines =  1
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -80,19 +78,12 @@ class DetailViewController: UIViewController {
     private lazy var name: UILabel = {
         var label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
-        label.numberOfLines =  2
+        label.numberOfLines =  1
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private lazy var manaCost: UILabel = {
-        var label = UILabel()
-        label.font = .boldSystemFont(ofSize: 16)
-        label.numberOfLines =  2
-        label.textAlignment = .left
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    
     private lazy var type: UILabel = {
         var label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
@@ -103,12 +94,11 @@ class DetailViewController: UIViewController {
     }()
     
     private lazy var stack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [name,manaCost, type,artist,setName])
+        let stack = UIStackView(arrangedSubviews: [name, type, artist, setName])
         stack.axis = .vertical
         stack.alignment = .leading
         stack.distribution = .fillProportionally
         stack.setCustomSpacing(5, after: name)
-        stack.setCustomSpacing(5, after: manaCost)
         stack.setCustomSpacing(5, after: type)
         stack.setCustomSpacing(5, after: artist)
         stack.setCustomSpacing(5, after: setName)

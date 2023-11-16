@@ -30,54 +30,26 @@ class APIFetchHandler {
         let urlPath = "/v1/cards"
         let queryItem = [URLQueryItem(name: "name", value: queryItemValue)]
         
-//        let urlRequest = createURL(baseURL: baseURL, path: urlPath)
         let urlRequest = createURL(baseURL: baseURL, path: urlPath, queryItems: queryItem)
         
         guard let url = urlRequest else {return}
         
-                URLSession.shared.dataTask(with: url) { data, response, error in
-                    if error != nil {
-                        print("error in request")
-                    } else if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                        guard let data = data else {return}
-        
-                        print("respose = \(response.statusCode)")
-        
-                        do {
-                            let decodeCards = try JSONDecoder().decode(Cards.self, from: data)
-        
-//                            let result = decodeCards.cards.filter { card in card.name == queryItemValue }
-        
-                            handler(decodeCards.cards)
-        
-                        } catch {
-                            print(error)
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor: nil)
+            .response{ resp in
+                switch resp.result{
+                case .success(let data):
+                    do{
+                        if let data = data {
+                            let jsonData = try JSONDecoder().decode(Cards.self, from: data)
+                            let result = jsonData.cards
+                            handler(result)
                         }
-        
-                    } else if let response = response as? HTTPURLResponse {
-                        print("respose = \(response.statusCode)")
+                    } catch {
+                        print(error.localizedDescription)
                     }
-                }.resume()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
-        }
-//        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor: nil)
-//            .response{ resp in
-//                switch resp.result{
-//                case .success(let data):
-//                    do{
-//                        if let data = data {
-//                            let jsonData = try JSONDecoder().decode(Cards.self, from: data)
-//                            let result = jsonData.cards
-//                            handler(result)
-//
-//                        }
-//
-//                    } catch {
-//                        print(error.localizedDescription)
-//                    }
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                }
-//            }
-//    }
-//}
+    }
+}

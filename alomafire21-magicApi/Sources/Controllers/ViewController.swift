@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController {
     
     // MARK: - Outlets
     private var mainView = MainView()
@@ -15,11 +15,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.keyboardType = .webSearch
-        textField.placeholder = "Search..."
+        textField.placeholder = " Search..."
         textField.backgroundColor = .systemFill
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.borderStyle = .line
-        textField.clearButtonMode = .whileEditing
+        textField.borderStyle = .roundedRect
+        textField.clearButtonMode = .always
         return textField
     }()
     
@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 23, weight: UIImage.SymbolWeight.thin), forImageIn: .normal)
         button.imageView?.tintColor = .black
-       // button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         return button
     }()
@@ -42,11 +42,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
     
     var data: [Cards] = []
     
@@ -62,7 +57,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setupView()
         viewConfiguration()
-        //dataHandler = data
+
         title = "Magic cards"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.titleView = textFieldStack
@@ -72,7 +67,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     private func setupView() {
-        APIFetchHandler.sharedInstance.fetchAPIData(queryItemValue: "Opt"){ apiData in
+        APIFetchHandler.sharedInstance.fetchAPIData(queryItemValue: nil ){ apiData in
             self.dataHandler = apiData
 
             DispatchQueue.main.async{
@@ -81,6 +76,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     private func viewConfiguration() {
+        textField.delegate = self
+        
         mainView.tableView.register(CastomTableViewCell.self, forCellReuseIdentifier: "cell")
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
@@ -92,11 +89,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Actions
-    
+       
+    @objc func buttonAction() {
+        
+        APIFetchHandler.sharedInstance.fetchAPIData(queryItemValue: self.textField.text ){ apiData in
+            self.dataHandler = apiData
+
+            DispatchQueue.main.async{
+                self.mainView.tableView.reloadData()
+            }
+        }
+        
+        }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -123,3 +130,16 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+extension ViewController: UITextFieldDelegate {
+   
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        buttonAction()
+        DispatchQueue.main.async{
+            self.mainView.tableView.reloadData()
+        }
+        
+        return true
+    }
+}
