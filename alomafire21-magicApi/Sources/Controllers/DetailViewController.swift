@@ -7,9 +7,7 @@
 
 import UIKit
 class DetailViewController: UIViewController {
-    
-    var data: [Cards] = []
-    
+        
     let globalQueue =  DispatchQueue.global(qos: .utility)
     
     var character: Model? {

@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }()
     
     private lazy var barButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 23, weight: UIImage.SymbolWeight.thin), forImageIn: .normal)
         button.imageView?.tintColor = .black
